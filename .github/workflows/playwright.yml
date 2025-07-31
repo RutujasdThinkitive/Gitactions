@@ -1,4 +1,4 @@
-name: Run Hello World Playwright Test
+name: Run Specific Playwright Test
 
 on:
   push:
@@ -7,28 +7,31 @@ on:
     branches: [master]
 
 jobs:
-  run-hello-world-test:
+  run-hello-spec:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout repository
+      - name: 🧾 Checkout repository
         uses: actions/checkout@v3
 
-      - name: 🟢 Setup Node.js
+      - name: 📦 Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: 📦 Install dependencies
+      - name: 📥 Install dependencies
         run: npm ci
 
-      - name: 🔧 Install Playwright Browsers
+      - name: 🧩 Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: 🧪 Run ONLY hello-world.spec.ts
-        run: npx playwright test tests/hello-world.spec.ts
+      - name: 📂 List files (debug)
+        run: ls -R
 
-      - name: 📁 Upload HTML Report (optional)
+      - name: 🧪 Run Hello.spec.ts test only
+        run: npx playwright test 'tests/EcareHealth/Hello\.spec\.ts'
+
+      - name: 📁 Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
