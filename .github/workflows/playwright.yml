@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Run Hello World Playwright Test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  test:
+  run-hello-world-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,10 +25,10 @@ jobs:
       - name: 🔧 Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: 🧪 Run Playwright Tests
-        run: npx playwright test
+      - name: 🧪 Run ONLY hello-world.spec.ts
+        run: npx playwright test tests/hello-world.spec.ts
 
-      - name: 📁 Upload Playwright HTML Report
+      - name: 📁 Upload HTML Report (optional)
         if: always()
         uses: actions/upload-artifact@v4
         with:
