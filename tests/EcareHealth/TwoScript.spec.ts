@@ -5,9 +5,9 @@ import { test, expect } from '@playwright/test';
 // =========================
 const testData = {
   provider: {
-    firstName: 'Samir',
-    lastName: 'Dham',
-    fullName: 'Samir Dham',
+    firstName: 'Sam',
+    lastName: 'Dumbre',
+    fullName: 'Sam Dumbre',
     email: 'rutuja.dumbre+39@thinkitive.com',
     created: false
   },
@@ -105,7 +105,7 @@ test.describe.serial('Healthcare Management Workflow - Full End-to-End', () => {
       await page.getByRole('textbox', { name: 'DOB' }).fill('02-20-1980');
       await page.getByRole('combobox', { name: 'Gender *' }).click();
       await page.getByRole('option', { name: 'Female', exact: true }).click();
-      await page.getByRole('textbox', { name: 'NPI Number', exact: true }).fill('9970169076');
+      await page.getByRole('textbox', { name: 'NPI Number', exact: true }).fill('99701698916');
       
       // Generate and store provider email
       testData.provider.email = randomEmail('provider');
