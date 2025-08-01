@@ -28,8 +28,8 @@ jobs:
       - name: 📂 List files (debug)
         run: ls -R
 
-      - name: 🧪 Run test
-        run: npx playwright test 'tests/EcareHealth'
+      - name: 🧪 Run tests in tests/Ecarehealth folder
+        run: npx playwright test tests/Ecarehealth
 
       - name: 📁 Upload Playwright HTML report
         if: always()
